@@ -14,21 +14,13 @@
   --color-line: #2D2A52;
   --color-accent: #FF5C8A; /* change this one line to recolour the site */
   --color-pale: #E4E8FF;
-  --color-ok: #1F9D62;
-  --color-okt: #5FDB9C;
 
   --animate-rise: rise 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
   --animate-fadein: fadein 0.7s ease-out forwards;
-  --animate-cardin: cardin 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s forwards;
-  --animate-draw: draw 0.4s ease-out forwards;
-  --animate-pulse-ring: pulse-ring 1.6s ease-out 2.4s 2;
   --animate-twinkle: twinkle var(--dur, 4s) ease-in-out var(--dl, 0s) infinite alternate;
 
   @keyframes rise { to { transform: none; } }
   @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  @keyframes cardin { from { opacity: 0; transform: translateY(18px) rotate(1.4deg); } to { opacity: 1; transform: none; } }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
-  @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(95, 219, 156, 0.5); } 100% { box-shadow: 0 0 0 11px rgba(95, 219, 156, 0); } }
   @keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
 }
 

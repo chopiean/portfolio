@@ -39,8 +39,3 @@ export interface Habit {
   title: string
   text: string
 }
-
-export interface Check {
-  title: string
-  sub?: string
-}

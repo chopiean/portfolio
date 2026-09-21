@@ -1,10 +1,4 @@
-import type {
-  Check,
-  FeaturedSkill,
-  Habit,
-  Project,
-  TimelineEntry,
-} from "./types";
+import type { FeaturedSkill, Habit, Project, TimelineEntry } from "./types";
 
 /* All the words on the site live in this file. Edit them here. */
 
@@ -27,16 +21,7 @@ export const headline =
   "I build React and TypeScript apps, and test them end to end.";
 
 export const intro =
-  "Third-year Business Information Technology student at Haaga-Helia in Helsinki, graduating in December 2026. Right now I'm building the frontend of a receipt-management app with a team.";
-
-export const checks: Check[] = [
-  { title: "Graduating December 2026" },
-  {
-    title: "Open to internships and junior roles",
-    sub: "Software development, frontend or full-stack",
-  },
-  { title: "Based in Helsinki" },
-];
+  "Third-year Business Information Technology student at Haaga-Helia in Helsinki, graduating in December 2026. Open for internships and junior roles in software development, frontend or full-stack.";
 
 export const projects: Project[] = [
   {
