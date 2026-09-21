@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --font-ui: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+  --color-bg: #0B0A17;
+  --color-deep: #06050F;
+  --color-surface: #14122A;
+  --color-surface2: #1D1A3B;
+  --color-ink: #F1EFFF;
+  --color-soft: #DAD6F0;
+  --color-muted: #A9A4CF;
+  --color-line: #2D2A52;
+  --color-accent: #FF5C8A; /* change this one line to recolour the site */
+  --color-pale: #E4E8FF;
+  --color-ok: #1F9D62;
+  --color-okt: #5FDB9C;
+
+  --animate-rise: rise 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  --animate-fadein: fadein 0.7s ease-out forwards;
+  --animate-cardin: cardin 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s forwards;
+  --animate-draw: draw 0.4s ease-out forwards;
+  --animate-pulse-ring: pulse-ring 1.6s ease-out 2.4s 2;
+  --animate-twinkle: twinkle var(--dur, 4s) ease-in-out var(--dl, 0s) infinite alternate;
+
+  @keyframes rise { to { transform: none; } }
+  @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @keyframes cardin { from { opacity: 0; transform: translateY(18px) rotate(1.4deg); } to { opacity: 1; transform: none; } }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(95, 219, 156, 0.5); } 100% { box-shadow: 0 0 0 11px rgba(95, 219, 156, 0); } }
+  @keyframes twinkle { from { opacity: 0.2; } to { opacity: 1; } }
+}
+
+@utility wrap {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 64px);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; color-scheme: dark; -webkit-text-size-adjust: 100%; }
+  body { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-serif); font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+  :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}
+
+/* ---- illustrations: scroll-driven drawing (Chrome, Safari; others just show the finished art) ---- */
+.art-tile { view-timeline: --tile block; }
+.art-bar { transform-box: fill-box; transform-origin: 50% 100%; }
+.art-receipt { transform-box: fill-box; }
+.art-trend { stroke-dasharray: 1; }
+@keyframes ring-a { from { stroke-dasharray: 0 364.4; } to { stroke-dasharray: 255 364.4; } }
+@keyframes ring-b { from { stroke-dasharray: 0 263.9; } to { stroke-dasharray: 145 263.9; } }
+@keyframes ring-c { from { stroke-dasharray: 0 163.4; } to { stroke-dasharray: 131 163.4; } }
+@keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes print-in { from { transform: translateY(-26px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .art-tile .art-ring-a { animation: ring-a both linear; animation-timeline: --tile; animation-range: entry 20% entry 100%; }
+    .art-tile .art-ring-b { animation: ring-b both linear; animation-timeline: --tile; animation-range: entry 20% entry 100%; }
+    .art-tile .art-ring-c { animation: ring-c both linear; animation-timeline: --tile; animation-range: entry 20% entry 100%; }
+    .art-tile .art-bar { animation: grow both linear; animation-timeline: --tile; animation-range: entry 15% entry 100%; }
+    .art-tile .art-trend { animation: trace both linear; animation-timeline: --tile; animation-range: entry 30% entry 100%; }
+    .art-tile .art-receipt { animation: print-in both linear; animation-timeline: --tile; animation-range: entry 10% entry 90%; }
+  }
+}
