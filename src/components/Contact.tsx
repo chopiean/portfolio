@@ -53,8 +53,7 @@ export default function Contact() {
           Get in touch
         </h2>
         <p className="mb-[clamp(32px,5vw,56px)] max-w-[36em] text-muted">
-          Looking for a junior developer or an intern who tests what she builds?
-          Send me a message.
+          Looking for a junior developer or an intern? Send me a message.
         </p>
 
         <div className="grid gap-[clamp(24px,4vw,48px)] min-[861px]:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
@@ -130,7 +129,7 @@ export default function Contact() {
             </p>
             <a
               href={`mailto:${profile.email}`}
-              className="mb-7 inline-block break-words font-ui text-[clamp(20px,2.6vw,30px)] font-extrabold leading-[1.2] tracking-[-0.02em]  transition-all duration-200 [font-stretch:112%] hover:decoration-[7px] hover:underline-offset-[9px]"
+              className="mb-7 inline-block break-words font-ui text-[clamp(20px,2.6vw,30px)] font-extrabold leading-[1.2] tracking-[-0.02em]  transition-all duration-200 [font-stretch:100%] hover:decoration-[7px] hover:underline-offset-[9px]"
             >
               {profile.email}
             </a>
