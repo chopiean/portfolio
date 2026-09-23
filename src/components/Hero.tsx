@@ -6,6 +6,7 @@ import {
   profile,
 } from "../data/content";
 import { cn } from "../lib/cn";
+import HeroCanvas from "./HeroCanvas";
 
 const btn =
   "inline-flex min-h-12 items-center rounded-[10px] border-2 px-[22px] font-ui text-base font-bold transition duration-150 hover:-translate-y-0.5 active:translate-y-0 motion-reduce:transition-none";
@@ -52,7 +53,14 @@ export default function Hero() {
       id="top"
       className="wrap grid items-center gap-[clamp(32px,5vw,72px)] pb-[clamp(16px,2.5vw,32px)] pt-[clamp(32px,6vw,80px)]"
     >
-      <div>
+      <div className="relative">
+        {/* 3D shapes float behind the headline, top-right. Purely
+            decorative — HeroCanvas itself hides on small screens and for
+            visitors who prefer reduced motion or lack WebGL. */}
+        <div className="pointer-events-none absolute -right-10 -top-16 -z-10 hidden size-[420px] min-[861px]:block">
+          <HeroCanvas />
+        </div>
+
         <h1 className="mb-7 font-ui text-[clamp(38px,5.2vw,72px)] font-extrabold leading-[1.04] tracking-[-0.025em] [font-stretch:116%]">
           {words.map((w, i) => (
             <span key={i}>

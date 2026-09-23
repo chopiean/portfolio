@@ -4,9 +4,10 @@ import { useInView } from "../hooks/useInView";
 import { cn } from "../lib/cn";
 import Art from "./Art";
 import Section from "./Section";
+import { useTilt } from "../hooks/useTilt";
 
 const card =
-  "group flex flex-col overflow-hidden rounded-[18px] border border-line bg-surface transition duration-300 hover:-translate-y-[3px] hover:border-ink/55 hover:shadow-[0_0_44px_rgba(241,239,255,0.1)] focus-within:border-ink/55 motion-reduce:transition-none";
+  "group relative flex flex-col overflow-hidden rounded-[18px] border border-line bg-surface transition-[border-color,box-shadow] duration-300 [transform:perspective(1000px)_rotateX(var(--tilt-x,0deg))_rotateY(var(--tilt-y,0deg))] [transition:transform_0.15s_ease-out,border-color_0.3s,box-shadow_0.3s] hover:border-ink/55 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] focus-within:border-ink/55 motion-reduce:!transform-none motion-reduce:transition-[border-color,box-shadow]";
 
 function useReveal<T extends HTMLElement>() {
   const [ref, inView] = useInView<T>();
@@ -18,9 +19,32 @@ function useReveal<T extends HTMLElement>() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const [ref, reveal] = useReveal<HTMLElement>();
+  const [revealRef, reveal] = useReveal<HTMLElement>();
+  const {
+    ref: tiltRef,
+    onPointerMove,
+    onPointerLeave,
+  } = useTilt<HTMLElement>();
+  const setRefs = (el: HTMLElement | null) => {
+    (revealRef as React.MutableRefObject<HTMLElement | null>).current = el;
+    (tiltRef as React.MutableRefObject<HTMLElement | null>).current = el;
+  };
   return (
-    <article ref={ref} className={cn(card, reveal)}>
+    <article
+      ref={setRefs}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+      className={cn(card, reveal)}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(480px circle at var(--glow-x, 50%) var(--glow-y, 50%), color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 60%)",
+        }}
+      ></div>
+      
       <div className="art-tile flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-line bg-[color-mix(in_srgb,var(--color-accent)_10%,var(--color-surface))]">
         <Art kind={project.art} />
       </div>
