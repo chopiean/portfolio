@@ -1,24 +1,24 @@
-import { profile, projects } from '../data/content'
-import type { Project } from '../data/types'
-import { useInView } from '../hooks/useInView'
-import { cn } from '../lib/cn'
-import Art from './Art'
-import Section from './Section'
+import { profile, projects } from "../data/content";
+import type { Project } from "../data/types";
+import { useInView } from "../hooks/useInView";
+import { cn } from "../lib/cn";
+import Art from "./Art";
+import Section from "./Section";
 
 const card =
-  'group flex flex-col overflow-hidden rounded-[18px] border border-line bg-surface transition duration-300 hover:-translate-y-[3px] hover:border-ink/55 hover:shadow-[0_0_44px_rgba(241,239,255,0.1)] focus-within:border-ink/55 motion-reduce:transition-none'
+  "group flex flex-col overflow-hidden rounded-[18px] border border-line bg-surface transition duration-300 hover:-translate-y-[3px] hover:border-ink/55 hover:shadow-[0_0_44px_rgba(241,239,255,0.1)] focus-within:border-ink/55 motion-reduce:transition-none";
 
 function useReveal<T extends HTMLElement>() {
-  const [ref, inView] = useInView<T>()
+  const [ref, inView] = useInView<T>();
   const cls = cn(
-    'transition-[opacity,transform,border-color,box-shadow] duration-700',
-    inView ? 'translate-y-0 opacity-100' : 'translate-y-[26px] opacity-0',
-  )
-  return [ref, cls] as const
+    "transition-[opacity,transform,border-color,box-shadow] duration-700",
+    inView ? "translate-y-0 opacity-100" : "translate-y-[26px] opacity-0"
+  );
+  return [ref, cls] as const;
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const [ref, reveal] = useReveal<HTMLElement>()
+  const [ref, reveal] = useReveal<HTMLElement>();
   return (
     <article ref={ref} className={cn(card, reveal)}>
       <div className="art-tile flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-line bg-[color-mix(in_srgb,var(--color-accent)_10%,var(--color-surface))]">
@@ -54,25 +54,26 @@ function ProjectCard({ project }: { project: Project }) {
         )}
       </div>
     </article>
-  )
+  );
 }
 
 function MoreCard() {
-  const [ref, reveal] = useReveal<HTMLElement>()
+  const [ref, reveal] = useReveal<HTMLElement>();
   return (
     <article
       ref={ref}
       className={cn(
         card,
-        'items-start justify-center bg-[color-mix(in_srgb,var(--color-accent)_8%,var(--color-surface))] p-8',
-        reveal,
+        "items-start justify-center bg-[color-mix(in_srgb,var(--color-accent)_8%,var(--color-surface))] p-8",
+        reveal
       )}
     >
       <h3 className="mb-2 font-ui text-[clamp(26px,3vw,36px)] font-extrabold leading-[1.15] tracking-[-0.02em] [font-stretch:112%]">
         See the code
       </h3>
       <p className="mb-6 max-w-[24em] text-soft">
-        My repositories are on GitHub, with READMEs that explain how each project works.
+        My repositories are on GitHub, with READMEs that explain how each
+        project works.
       </p>
       <a
         href={profile.github}
@@ -83,7 +84,7 @@ function MoreCard() {
         {profile.githubLabel}
       </a>
     </article>
-  )
+  );
 }
 
 export default function Projects() {
@@ -93,12 +94,12 @@ export default function Projects() {
       title="Projects"
       intro="Three projects, from a solo full-stack app to a team frontend I'm building right now."
     >
-      <div className="grid gap-[clamp(20px,3vw,36px)] min-[861px]:grid-cols-2">
+      <div className="grid gap-[clamp(20px,3vw,28px)] min-[861px]:grid-cols-2">
         {projects.map((p) => (
           <ProjectCard key={p.title} project={p} />
         ))}
         <MoreCard />
       </div>
     </Section>
-  )
+  );
 }
