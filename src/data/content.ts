@@ -17,8 +17,12 @@ export const nav = [
   { id: "skills", label: "Skills" },
 ] as const;
 
-export const headline =
-  "I build React and TypeScript apps, and test them end to end.";
+// Hero h1: "Shaping <rotating word>" then one line per entry in `rest`.
+export const headline = {
+  lead: "Shaping",
+  rotating: ["Ideas", "Concepts", "Designs", "Code"],
+  rest: ["into Real Projects", "that Deliver Results"],
+} as const;
 
 export const intro =
   "Third-year Business Information Technology student at Haaga-Helia in Helsinki, graduating in December 2026. Open for internships and junior roles in software development, frontend or full-stack.";

@@ -29,7 +29,7 @@ export default function Header() {
       <div className="wrap flex min-h-[72px] flex-wrap items-center justify-between gap-x-6 gap-y-1">
         <a
           href="#top"
-          className="inline-flex items-center font-ui text-[30px] tracking-[-0.01em] [font-stretch:100%] py-4"
+          className="inline-flex items-center font-ui text-[28px] tracking-[-0.01em] [font-stretch:100%] py-6 mt-4"
         >
           {profile.name}
         </a>
@@ -49,7 +49,7 @@ export default function Header() {
           ))}
           <a
             href="#contact"
-            className="ml-2 hidden min-h-11 items-center rounded-lg bg-pale px-[18px] font-ui text-[15px] font-semibold text-bg transition-colors hover:bg-accent min-[561px]:inline-flex"
+            className=" hidden min-h-11 items-center rounded-lg bg-pale px-[10px] font-ui text-[18px] font-semibold text-bg transition-colors hover:bg-accent min-[561px]:inline-flex"
           >
             Contact me
           </a>
