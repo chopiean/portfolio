@@ -61,6 +61,25 @@ export default function Hero() {
           <HeroCanvas />
         </div>
 
+        <p
+          className="mb-3 font-ui text-sm font-bold uppercase tracking-[0.14em] text-accent [perspective:800px]"
+          aria-hidden="true"
+        >
+          {"Code that works. Tested to prove it.".split(" ").map((w, i) => (
+            <span
+              key={i}
+              className="mr-2 inline-block [transform-style:preserve-3d]"
+            >
+              <span
+                className="inline-block animate-flip-in opacity-0 [transform-origin:50%_100%]"
+                style={{ animationDelay: `${i * 0.09}s` }}
+              >
+                {w}
+              </span>
+            </span>
+          ))}
+        </p>
+
         <h1 className="mb-7 font-ui text-[clamp(38px,5.2vw,72px)] font-extrabold leading-[1.04] tracking-[-0.025em] [font-stretch:116%]">
           {words.map((w, i) => (
             <span key={i}>
