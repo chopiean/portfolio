@@ -41,7 +41,7 @@ export default function Header() {
             <a
               key={n.id}
               href={`#${n.id}`}
-              className={cn(link, active === n.id && "underline")}
+              className={link}
               aria-current={active === n.id ? "true" : undefined}
             >
               {n.label}
